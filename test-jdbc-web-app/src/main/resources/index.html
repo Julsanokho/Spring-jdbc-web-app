@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>LIST</title>
+</head>
+<body>
+<div class="col-sm-6">
+<a th:href="@{'/new'}" class="btn btn-success">
+<i class="material-icons">&#xE147;</i> 
+<span>Add New Student</span></a>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">STUDENT ID</th>
+      <th scope="col">STUDENT NAME</th>
+      <th scope="col">FILLIERE</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">EDIT</th>
+	  <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr th:each="student :${listStudent}">
+    <tr>
+      <th th:text="${student.id }">Student Id</th>
+      <td th:text="${student.name }">Student Name</td>
+      <td th:text="${student.filiere }">Student Filiere</td>
+      <td th:text="${student.addres }">Student Addres</td>
+      <td>     
+      <a th:href="@{'/edit/'+${student.id}" 
+       onclick="return confirm('Do you Want edit?')" 
+       class="edit btn btn-danger ml-2">
+       <i class="material-icons" 
+       data-toggle="tooltip" 
+       title="Edit">&#xE872;</i>
+       </a>
+      </td>
+      <td>     
+      <a href="@{'delete'+${student.id}" 
+       onclick="return confirm('Are you sure?')" 
+       class="delete btn btn-danger ml-2">
+       <i class="material-icons" 
+       data-toggle="tooltip" 
+       title="Delete">&#xE872;</i>
+       </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
